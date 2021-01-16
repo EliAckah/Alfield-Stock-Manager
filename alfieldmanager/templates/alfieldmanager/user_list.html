@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfield Manager</title>
+</head>
+
+<body>
+    {% extends "alfieldmanager/base.html" %} {% load bootstrap4 %} {% block content %}
+    <a class="btn btn-primary" href="{% url 'register' %}" role="button">Add New Users</a>
+    <br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name}}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td><a class="btn btn-warning btn-sm" href="{% url 'update' user.pk %}" role="button">Edit</a></td>
+            <td><a class="btn btn-danger btn-sm" href="{% url 'delete' user.pk%}" role="button">del</a></td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    {% endblock content %}
+</body>
+
+</html>

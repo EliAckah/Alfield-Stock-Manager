@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfield Manager</title>
+</head>
+
+<body>
+    {% extends "alfieldmanager/base.html" %} {% load bootstrap4 %} {% block content %}
+    <form method='get'>
+        <div class="pr-2">
+            {{ filter.form }}
+        </div>
+        <button class="btn btn-outline-primary mb-5" type="submit">Search</button>
+    </form>
+    <a class="btn btn-primary" href="{% url 'add_product' %}" role="button">Add New Products</a>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">In Stock</th>
+                <th scope="col">Products Sold</th>
+                <th scope="col">Date Ordered</th>
+                <th scope="col">Last Purchased</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item.pk }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.in_stock }}</td>
+                <td>{{ item.sold }}</td>
+                <td>{{ item.date_ordered }}</td>
+                <td>{{ item.date_purchased }}</td>
+                <td><a class="btn btn-warning btn-sm" href="{% url 'product_update' item.pk %}" role="button">Edit</a></td>
+                <td><a class="btn btn-danger btn-sm" href="{% url 'product_delete' item.pk %}" role="button">del</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock content %}
+</body>
+
+</html>

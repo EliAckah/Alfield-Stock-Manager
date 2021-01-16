@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfield Manager | Home Page</title>
+</head>
+
+<body>
+    {% extends "alfieldmanager/base.html" %} {% block page_header %}
+    <div class="jumbotron">
+        <h1 class="display-3">Manage Products.</h1>
+        <a class="btn btn-lg btn-primary" href="{% url 'login' %}" role="button">
+            Login &raquo;
+        </a>
+    </div>
+    {% endblock page_header %}
+</body>
+
+</html>
